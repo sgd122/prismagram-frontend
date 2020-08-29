@@ -46,16 +46,23 @@ const Form = styled(Box)`
   }
 `;
 
-export default ({ setAction, action, username, email, firstName, onLogin }) => (
+export default ({
+  setAction,
+  action,
+  username,
+  email,
+  firstName,
+  onSubmit,
+}) => (
   <Wrapper>
     <Form>
       {action === "logIn" ? (
-        <form onSubmit={onLogin}>
+        <form onSubmit={onSubmit}>
           <Input placeholder="이메일 주소" {...email} type="email" />
           <Button text="로그인" />
         </form>
       ) : (
-        <form onSubmit={onLogin}>
+        <form onSubmit={onSubmit}>
           <Input placeholder="이메일 주소" {...email} type="email" />
           <Input placeholder="성명" {...firstName} />
           <Input placeholder="사용자 이름" {...username} />
