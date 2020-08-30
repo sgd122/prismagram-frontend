@@ -52,21 +52,29 @@ export default ({
   username,
   email,
   firstName,
+  secret,
   onSubmit,
 }) => (
   <Wrapper>
     <Form>
-      {action === "logIn" ? (
+      {action === "logIn" && (
         <form onSubmit={onSubmit}>
           <Input placeholder="이메일 주소" {...email} type="email" />
           <Button text="로그인" />
         </form>
-      ) : (
+      )}
+      {action === "signUp" && (
         <form onSubmit={onSubmit}>
           <Input placeholder="이메일 주소" {...email} type="email" />
           <Input placeholder="성명" {...firstName} />
           <Input placeholder="사용자 이름" {...username} />
           <Button text="가입" />
+        </form>
+      )}
+      {action === "confirm" && (
+        <form onSubmit={onSubmit}>
+          <Input placeholder="Paste your secret" required {...secret} />
+          <Button text="확인" />
         </form>
       )}
     </Form>
