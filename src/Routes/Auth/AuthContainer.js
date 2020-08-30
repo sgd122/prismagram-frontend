@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import AuthPresenter from "./AuthPresenter";
 import userInput from "../../Hooks/userInput";
 import { useMutation } from "react-apollo-hooks";
-import { LOG_IN, CREATE_ACCOUNT } from "./AuthQueries";
+import {
+  LOG_IN,
+  CREATE_ACCOUNT,
+  CONFIRM_SECRET,
+  LOCAL_LOG_IN,
+} from "./AuthQueries";
 import { toast } from "react-toastify";
 
 export default () => {
   const [action, setAction] = useState("logIn");
   const username = userInput("");
   const secret = userInput("");
-  const email = userInput("dirrksdl@naver.com");
+  const email = userInput("");
   const firstName = userInput("");
   const [requestSecretMutation] = useMutation(LOG_IN, {
     variables: { email: email.value },
@@ -22,6 +27,15 @@ export default () => {
       firstName: firstName.value,
     },
   });
+
+  const [confirmSecretMutation] = useMutation(CONFIRM_SECRET, {
+    variables: {
+      email: email.value,
+      secret: secret.value,
+    },
+  });
+
+  const [localLogInMutation] = useMutation(LOCAL_LOG_IN);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -67,6 +81,22 @@ export default () => {
         }
       } else {
         toast.error("모든 항목을 기입하세요.");
+      }
+    } else if (action === "confirm") {
+      if (secret.value !== "") {
+        try {
+          const {
+            data: { confirmSecret: token },
+          } = await confirmSecretMutation();
+          //TODO: log user in
+          if (token !== "" && token !== undefined) {
+            localLogInMutation({ variables: { token } });
+          } else {
+            throw Error();
+          }
+        } catch {
+          toast.error("Can't confirm secret,check again");
+        }
       }
     }
   };
