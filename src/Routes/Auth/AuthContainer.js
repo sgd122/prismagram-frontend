@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AuthPresenter from "./AuthPresenter";
-import userInput from "../../Hooks/userInput";
+import useInput from "../../Hooks/useInput";
 import { useMutation } from "react-apollo-hooks";
 import {
   LOG_IN,
@@ -12,10 +12,10 @@ import { toast } from "react-toastify";
 
 export default () => {
   const [action, setAction] = useState("logIn");
-  const username = userInput("");
-  const secret = userInput("");
-  const email = userInput("");
-  const firstName = userInput("");
+  const username = useInput("");
+  const secret = useInput("");
+  const email = useInput("");
+  const firstName = useInput("");
   const [requestSecretMutation] = useMutation(LOG_IN, {
     variables: { email: email.value },
   });
