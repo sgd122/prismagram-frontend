@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const Container = styled.input`
   border: 0;
@@ -35,7 +35,7 @@ Input.propTypes = {
   required: PropTypes.bool,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 
 export default Input;
