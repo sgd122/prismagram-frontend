@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from "react-helmet";
 import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
@@ -52,36 +53,62 @@ export default ({
   username,
   email,
   firstName,
+  secret,
   onSubmit,
 }) => (
   <Wrapper>
     <Form>
-      {action === "logIn" ? (
-        <form onSubmit={onSubmit}>
-          <Input placeholder="이메일 주소" {...email} type="email" />
-          <Button text="로그인" />
-        </form>
-      ) : (
-        <form onSubmit={onSubmit}>
-          <Input placeholder="이메일 주소" {...email} type="email" />
-          <Input placeholder="성명" {...firstName} />
-          <Input placeholder="사용자 이름" {...username} />
-          <Button text="가입" />
-        </form>
+      {action === "logIn" && (
+        <>
+          <Helmet>
+            <title>Log In | Prismagram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input placeholder="이메일 주소" {...email} type="email" />
+            <Button text="로그인" />
+          </form>
+        </>
+      )}
+      {action === "signUp" && (
+        <>
+          <Helmet>
+            <title>Sign Up | Prismagram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input placeholder="이메일 주소" {...email} type="email" />
+            <Input placeholder="성명" {...firstName} />
+            <Input placeholder="사용자 이름" {...username} />
+            <Button text="가입" />
+          </form>
+        </>
+      )}
+      {action === "confirm" && (
+        <>
+          <Helmet>
+            <title>Confirm Secret | Prismagram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input placeholder="Paste your secret" required {...secret} />
+            <Button text="확인" />
+          </form>
+        </>
       )}
     </Form>
-    <StateChanger>
-      {action === "logIn" ? (
-        <>
-          계정이 없으신가요?{" "}
-          <Link onClick={() => setAction("signUp")}>가입하기</Link>
-        </>
-      ) : (
-        <>
-          계정이 있으신가요?{" "}
-          <Link onClick={() => setAction("logIn")}>로그인</Link>
-        </>
-      )}
-    </StateChanger>
+
+    {action !== "confirm" && (
+      <StateChanger>
+        {action === "logIn" ? (
+          <>
+            계정이 없으신가요?{" "}
+            <Link onClick={() => setAction("signUp")}>가입하기</Link>
+          </>
+        ) : (
+          <>
+            계정이 있으신가요?{" "}
+            <Link onClick={() => setAction("logIn")}>로그인</Link>
+          </>
+        )}
+      </StateChanger>
+    )}
   </Wrapper>
 );

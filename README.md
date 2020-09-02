@@ -1,5 +1,7 @@
 # Instaclone Frontend
 
+## 설정
+
 ```CMD
 npx create-react-app prismagram-frontend
 
