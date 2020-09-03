@@ -37,13 +37,13 @@ const Files = styled.div`
   flex-shrink: 0;
 `;
 
-const File = styled.img`
+const File = styled.div`
   max-width: 100%;
   width: 100%;
   height: 600px;
   position: absolute;
   top: 0;
-  background-imgae: url(${(props) => props.src});
+  background-image: url("${(props) => props.src}");
   background-size: cover;
   background-position: center;
   opacity: ${(props) => (props.showing ? 1 : 0)};
@@ -109,7 +109,7 @@ export default ({
     <Files>
       {files &&
         files.map((file, index) => (
-          <File id={file.id} src={file.url} showing={index === currentItem} />
+          <File key={file.id} src={file.url} showing={index === currentItem} />
         ))}
     </Files>
     <Meta>

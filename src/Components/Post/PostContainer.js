@@ -20,7 +20,7 @@ const PostContainer = ({
   const comment = useInput("");
   const slide = () => {
     const totalFiles = files.length;
-    if (currentItem == totalFiles - 1) {
+    if (currentItem === totalFiles - 1) {
       setTimeout(() => setCurrentItem(0), 3000);
     } else {
       setTimeout(() => setCurrentItem(currentItem + 1), 3000);
@@ -30,7 +30,7 @@ const PostContainer = ({
   useEffect(() => {
     slide();
   }, [currentItem]);
-  console.log(currentItem);
+
   return (
     <PostPresenter
       user={user}
