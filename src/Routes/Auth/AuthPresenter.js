@@ -64,7 +64,12 @@ export default ({
             <title>Log In | Prismagram</title>
           </Helmet>
           <form onSubmit={onSubmit}>
-            <Input placeholder="이메일 주소" {...email} type="email" />
+            <Input
+              placeholder="이메일 주소"
+              value={email.value}
+              onChange={email.onChange}
+              type="email"
+            />
             <Button text="로그인" />
           </form>
         </>
@@ -75,9 +80,22 @@ export default ({
             <title>Sign Up | Prismagram</title>
           </Helmet>
           <form onSubmit={onSubmit}>
-            <Input placeholder="이메일 주소" {...email} type="email" />
-            <Input placeholder="성명" {...firstName} />
-            <Input placeholder="사용자 이름" {...username} />
+            <Input
+              placeholder="이메일 주소"
+              value={email.value}
+              onChange={email.onChange}
+              type="email"
+            />
+            <Input
+              placeholder="성명"
+              value={firstName}
+              onChange={firstName.onChange}
+            />
+            <Input
+              placeholder="사용자 이름"
+              value={username}
+              onChange={username.onChange}
+            />
             <Button text="가입" />
           </form>
         </>
@@ -88,7 +106,12 @@ export default ({
             <title>Confirm Secret | Prismagram</title>
           </Helmet>
           <form onSubmit={onSubmit}>
-            <Input placeholder="Paste your secret" required {...secret} />
+            <Input
+              placeholder="Paste your secret"
+              required
+              value={secret}
+              onChange={secret.onChange}
+            />
             <Button text="확인" />
           </form>
         </>
