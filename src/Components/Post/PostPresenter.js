@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TextareaAutosize from "react-autosize-textarea";
 import FatText from "../FatText";
 import Avatar from "../Avatar";
-import { HeartFull, HeartEmpty, Comment } from "../Icons";
+import { HeartFull, HeartEmpty, Comment as CommentIcon } from "../Icons";
 
 const Post = styled.div`
   ${(props) => props.theme.whiteBox};
@@ -89,6 +89,16 @@ const Textarea = styled(TextareaAutosize)`
   }
 `;
 
+const Comments = styled.ul`
+  margin-top: 10px;
+`;
+const Comment = styled.li`
+  margin-bottom: 7px;
+  span {
+    margin-right: 5px;
+  }
+`;
+
 export default ({
   user: { name, avatar },
   location,
@@ -99,6 +109,9 @@ export default ({
   newComment,
   currentItem,
   toggleLike,
+  onKeyPress,
+  comments,
+  selfComments,
 }) => (
   <Post>
     <Header>
@@ -120,12 +133,33 @@ export default ({
           {isLiked ? <HeartFull /> : <HeartEmpty />}
         </Button>
         <Button>
-          <Comment />
+          <CommentIcon />
         </Button>
       </Buttons>
       <FatText text={likeCount === 1 ? "1 like" : `${likeCount} likes`} />
+      {comments && (
+        <Comments>
+          {comments.map((comment) => (
+            <Comment key={comment.id}>
+              <FatText text={comment.user.name} />
+              {comment.text}
+            </Comment>
+          ))}
+          {selfComments.map((comment) => (
+            <Comment key={comment.id}>
+              <FatText text={comment.user.name} />
+              {comment.text}
+            </Comment>
+          ))}
+        </Comments>
+      )}
       <Timestamp>{createdAt}</Timestamp>
-      <Textarea placeholder={"댓글 달기..."} {...newComment} />
+      <Textarea
+        placeholder={"댓글 달기..."}
+        value={newComment.value}
+        onChange={newComment.onChange}
+        onKeyPress={onKeyPress}
+      />
     </Meta>
   </Post>
 );
