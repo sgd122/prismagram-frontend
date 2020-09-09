@@ -12,6 +12,7 @@ const FatText = ({ text, className }) => (
 
 FatText.propTypes = {
   text: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default FatText;
