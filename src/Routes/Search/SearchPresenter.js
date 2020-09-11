@@ -45,6 +45,7 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
                 isFollowing={user.isFollowing}
                 url={user.avatar}
                 isSelf={user.isSelf}
+                id={user.id}
               />
             ))
           )}
@@ -64,7 +65,6 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
 SearchPresenter.propTypes = {
   searchTerm: PropTypes.string,
   loading: PropTypes.bool,
-  data: PropTypes.string,
 };
 
 export default SearchPresenter;
