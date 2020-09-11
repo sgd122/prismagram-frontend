@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../Routes/Auth";
 import Feed from "../Routes/Feed";
@@ -7,13 +8,19 @@ import Explore from "../Routes/Explore";
 import Profile from "../Routes/Profile";
 import Search from "../Routes/Search";
 
+const Wrapper = styled.div`
+  min-height: 500px;
+`;
+
 const LoggedInRoutes = () => (
-  <Switch>
-    <Route exact path="/" component={Feed} />
-    <Route path="/explore" component={Explore} />
-    <Route exact path="/search" component={Search} />
-    <Route path="/:username" component={Profile} />
-  </Switch>
+  <Wrapper>
+    <Switch>
+      <Route exact path="/" component={Feed} />
+      <Route path="/explore" component={Explore} />
+      <Route exact path="/search" component={Search} />
+      <Route path="/:username" component={Profile} />
+    </Switch>
+  </Wrapper>
 );
 
 const LoggedOutRoutes = () => (
