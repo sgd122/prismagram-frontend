@@ -88,12 +88,12 @@ export default ({
             />
             <Input
               placeholder="성명"
-              value={firstName}
+              value={firstName.value}
               onChange={firstName.onChange}
             />
             <Input
               placeholder="사용자 이름"
-              value={username}
+              value={username.value}
               onChange={username.onChange}
             />
             <Button text="가입" />
@@ -109,7 +109,7 @@ export default ({
             <Input
               placeholder="Paste your secret"
               required
-              value={secret}
+              value={secret.value}
               onChange={secret.onChange}
             />
             <Button text="확인" />

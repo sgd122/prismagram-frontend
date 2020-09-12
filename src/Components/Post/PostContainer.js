@@ -29,7 +29,7 @@ const PostContainer = ({
     variables: { postId: id, text: comment.value },
   });
   const slide = () => {
-    const totalFiles = files.length;
+    const totalFiles = files ? files.length : 0;
     if (currentItem === totalFiles - 1) {
       setTimeout(() => setCurrentItem(0), 3000);
     } else {

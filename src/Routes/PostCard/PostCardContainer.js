@@ -9,6 +9,5 @@ export default withRouter(({ location: { search } }) => {
   const { data, loading } = useQuery(POST_CARD_QUERY, {
     variables: { id: postId },
   });
-  console.log(data);
   return <PostCardPresenter loading={loading} data={data} />;
 });

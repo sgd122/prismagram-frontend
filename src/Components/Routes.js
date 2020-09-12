@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Auth from "../Routes/Auth";
 import Feed from "../Routes/Feed";
 import Explore from "../Routes/Explore";
@@ -18,16 +18,18 @@ const LoggedInRoutes = () => (
     <Switch>
       <Route exact path="/" component={Feed} />
       <Route path="/explore" component={Explore} />
-      <Route exact path="/search" component={Search} />
+      <Route path="/search" component={Search} />
       <Route path="/post" component={PostCard} />
       <Route path="/:username" component={Profile} />
+      <Redirect from="*" to="/" />
     </Switch>
   </Wrapper>
 );
 
 const LoggedOutRoutes = () => (
   <Switch>
-    <Route expact path="/" component={Auth} />
+    <Route exact path="/" component={Auth} />
+    <Redirect from="*" to="/" />
   </Switch>
 );
 
