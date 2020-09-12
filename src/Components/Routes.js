@@ -7,6 +7,7 @@ import Feed from "../Routes/Feed";
 import Explore from "../Routes/Explore";
 import Profile from "../Routes/Profile";
 import Search from "../Routes/Search";
+import PostCard from "../Routes/PostCard";
 
 const Wrapper = styled.div`
   min-height: 500px;
@@ -18,6 +19,7 @@ const LoggedInRoutes = () => (
       <Route exact path="/" component={Feed} />
       <Route path="/explore" component={Explore} />
       <Route exact path="/search" component={Search} />
+      <Route path="/post" component={PostCard} />
       <Route path="/:username" component={Profile} />
     </Switch>
   </Wrapper>

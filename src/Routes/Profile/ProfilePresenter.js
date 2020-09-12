@@ -7,7 +7,6 @@ import FatText from "../../Components/FatText";
 import FollowButton from "../../Components/FollowButton";
 import SquarePost from "../../Components/SquarePost";
 import Button from "../../Components/Button";
-import { UserThumb } from "../../Components/Icons";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -124,6 +123,7 @@ export default ({ loading, data, logOut }) => {
             posts.map((post) => (
               <SquarePost
                 key={post.id}
+                id={post.id}
                 likeCount={post.likeCount}
                 commentCount={post.commentCount}
                 file={post.files[0]}
