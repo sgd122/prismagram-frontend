@@ -45,24 +45,31 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
           {data.searchUser.length === 0 ? (
             <FatText text={"No users found"} />
           ) : (
-              data.searchUser.map((user) => (
-                <UserCard
-                  key={user.id}
-                  name={user.name}
-                  isFollowing={user.isFollowing}
-                  url={user.avatar}
-                  isSelf={user.isSelf}
-                  id={user.id}
-                />
-              ))
-            )}
+            data.searchUser.map((user) => (
+              <UserCard
+                key={user.id}
+                name={user.name}
+                isFollowing={user.isFollowing}
+                url={user.avatar}
+                isSelf={user.isSelf}
+                id={user.id}
+              />
+            ))
+          )}
         </Section>
         <PostSection>
           {data.searchPost.length === 0 ? (
             <FatText text={"No photos found"} />
           ) : (
-              data.searchPost.map((post) => <SquarePost likeCount={post.likeCount} commentCount={post.commentCount} file={post.files[0]} />)
-            )}
+            data.searchPost.map((post) => (
+              <SquarePost
+                key={post.id}
+                likeCount={post.likeCount}
+                commentCount={post.commentCount}
+                file={post.files[0]}
+              />
+            ))
+          )}
         </PostSection>
       </Wrapper>
     );
