@@ -28,6 +28,7 @@ const PostContainer = ({
   const [addCommentMutation] = useMutation(ADD_COMMENT, {
     variables: { postId: id, text: comment.value },
   });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const slide = () => {
     const totalFiles = files ? files.length : 0;
     if (currentItem === totalFiles - 1) {
@@ -39,7 +40,7 @@ const PostContainer = ({
 
   useEffect(() => {
     slide();
-  }, [currentItem]);
+  }, [currentItem, slide]);
 
   const toggleLike = async () => {
     toggleLikeMutation();
