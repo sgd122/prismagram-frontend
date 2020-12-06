@@ -41,5 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://prismagram-sgd.netlify.app"
+  "root": "build/",  
+  "routes": { 
+    "/**": "index.html"  
+  }
 }
