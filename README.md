@@ -1,5 +1,10 @@
 # Instaclone Frontend
 
+## 배포관련
+
+- Frontend : netlify
+- Backend : Heroku
+
 ## 설정
 
 ```CMD
