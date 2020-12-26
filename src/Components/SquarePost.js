@@ -4,11 +4,17 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { HeartFull, CommentFull } from "./Icons";
 
+// const getRandomInt = (min, max) => {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+// }
+
 const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
-  display: flex;
+  display: flex;  
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -43,7 +49,7 @@ const NumberText = styled.div`
   font-size: 16px;
 `;
 
-const SquarePost = ({ id, likeCount, commentCount, file }) => (
+const SquarePost = ({ id, likeCount, commentCount, file, type = 'profile' }) => (
   <Container bg={file && file.url}>
     <Link to={`/post?id=${id}`}>
       <Overlay>
@@ -64,6 +70,7 @@ SquarePost.propTypes = {
   likeCount: PropTypes.number.isRequired,
   commentCount: PropTypes.number.isRequired,
   file: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default SquarePost;

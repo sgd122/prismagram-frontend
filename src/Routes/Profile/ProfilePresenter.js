@@ -59,6 +59,7 @@ const Posts = styled.div`
   grid-template-columns: repeat(4, 200px);
   grid-template-rows: 200px;
   grid-auto-rows: 200px;
+  grid-gap: 5px;
 `;
 
 export default ({ loading, data, logOut }) => {
@@ -99,8 +100,8 @@ export default ({ loading, data, logOut }) => {
               {isSelf ? (
                 <Button onClick={logOut} text="로그아웃" />
               ) : (
-                <FollowButton isFollowing={isFollowing} id={id} />
-              )}
+                  <FollowButton isFollowing={isFollowing} id={id} />
+                )}
             </UsernameRow>
             <Counts>
               <Count>
